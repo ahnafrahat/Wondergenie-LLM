@@ -12,6 +12,13 @@ WanderGenie LLM is an innovative iOS application that leverages artificial intel
 - 🎡 Activity Planning
 - 📍 Location-Based Services
 
+## Screenshots
+
+<div align="center">
+  <img src="docs/screenshots/Screenshot1.PNG" alt="WanderGenie Preference Screen" width="300"/>
+  <img src="docs/screenshots/Screenshot2.PNG" alt="WanderGenie Itinerary Result" width="300"/>
+</div>
+
 ## Requirements
 
 - iOS 13.0+
