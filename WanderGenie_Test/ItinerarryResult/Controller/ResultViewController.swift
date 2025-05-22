@@ -96,11 +96,11 @@ class ResultViewController: UIViewController {
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("Bearer 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", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer @@ Enter Your Open AI API Key Here", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let payload: [String: Any] = [
-            "model": "gpt-3.5-turbo-0125", // GPT mini, cheaper version
+            "model": "gpt-3.5-turbo-0125", 
             "temperature": 0.5,
             "messages": [
                 ["role": "system", "content": "You are an Itinerary Assistant. Provide a day-by-day travel guide."],
