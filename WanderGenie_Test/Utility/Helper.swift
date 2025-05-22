@@ -39,7 +39,7 @@ class Helper {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
             let dateRange = "\(formatter.string(from: preference.startDate)) - \(formatter.string(from: preference.endDate))"
-            let travelerInfo = "\(preference.numberOfTravelers) traveler\(preference.numberOfTravelers > 1 ? "s" : "") • \(preference.budget.capitalized) budget"
+            let travelerInfo = "\(preference.numberOfTravelers) traveler\(preference.numberOfTravelers > 1 ? "s" : "") • \(preference.dailyBudget) budget"
             yPosition = drawText(dateRange, at: yPosition + 10, font: .systemFont(ofSize: 16))
             yPosition = drawText(travelerInfo, at: yPosition + 5, font: .systemFont(ofSize: 16))
             yPosition += 20

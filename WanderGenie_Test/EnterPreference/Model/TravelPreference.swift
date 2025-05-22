@@ -13,7 +13,10 @@ struct TravelPreference {
     var endDate: Date
     var numberOfTravelers: Int
     var preferredActivities: [String]
-    var budget: String
+    var dailyBudget: Double
+    var accommodationPreference: String
+    var transportationPreference: String
+    var specialNeeds: String
 
     var durationInDays: Int {
         Calendar.current.dateComponents([.day], from: startDate, to: endDate).day ?? 0

@@ -15,7 +15,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		FCF64BE72DDE412E00AC68BE /* Exceptions for "WanderGenie_LLM" folder in "WanderGenie_LLM" target */ = {
+		FCF64BE72DDE412E00AC68BE /* Exceptions for "WanderGenie_Test" folder in "WanderGenie_LLM" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -25,12 +25,12 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		FCF64BD72DDE412C00AC68BE /* WanderGenie_LLM */ = {
+		FCF64BD72DDE412C00AC68BE /* WanderGenie_Test */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				FCF64BE72DDE412E00AC68BE /* Exceptions for "WanderGenie_LLM" folder in "WanderGenie_LLM" target */,
+				FCF64BE72DDE412E00AC68BE /* Exceptions for "WanderGenie_Test" folder in "WanderGenie_LLM" target */,
 			);
-			path = WanderGenie_LLM;
+			path = WanderGenie_Test;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -50,7 +50,7 @@
 		FCF64BCC2DDE412C00AC68BE = {
 			isa = PBXGroup;
 			children = (
-				FCF64BD72DDE412C00AC68BE /* WanderGenie_LLM */,
+				FCF64BD72DDE412C00AC68BE /* WanderGenie_Test */,
 				FCF64BD62DDE412C00AC68BE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,7 +79,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				FCF64BD72DDE412C00AC68BE /* WanderGenie_LLM */,
+				FCF64BD72DDE412C00AC68BE /* WanderGenie_Test */,
 			);
 			name = WanderGenie_LLM;
 			packageProductDependencies = (

@@ -15,7 +15,17 @@ class EnterPreferenceViewController: UIViewController {
     @IBOutlet weak var numberOfTravellerTextField: UITextField!
     @IBOutlet weak var preferredActivityTextField: UITextField!
     @IBOutlet weak var budgetTextField: UITextField!
-
+    
+    
+    //New Fields
+    
+    @IBOutlet weak var accomodationPreferenceTextField: UITextField!
+    
+    @IBOutlet weak var transportationPreferenceTextField: UITextField!
+    
+    @IBOutlet weak var specialNeedTextField: UITextField!
+    
+    
     private let datePicker = UIDatePicker()
     private var selectedDateField: UITextField?
 
@@ -30,7 +40,10 @@ class EnterPreferenceViewController: UIViewController {
         endDate: Date(),
         numberOfTravelers: 1,
         preferredActivities: [],
-        budget: ""
+        dailyBudget: 0.0,
+        accommodationPreference: "",
+        transportationPreference: "",
+        specialNeeds: ""
     )
 
     override func viewDidLoad() {
@@ -85,15 +98,29 @@ class EnterPreferenceViewController: UIViewController {
         numberOfTravellerTextField.delegate = self
         budgetTextField.delegate = self
         preferredActivityTextField.delegate = self
+        accomodationPreferenceTextField.delegate = self
+        transportationPreferenceTextField.delegate = self
+        specialNeedTextField.delegate = self
 
-        // Disable keyboard input
+        // Disable keyboard input for picker fields
         numberOfTravellerTextField.inputView = UIView()
-        budgetTextField.inputView = UIView()
         preferredActivityTextField.inputView = UIView()
+        
+        // Configure keyboard type for budget
+        budgetTextField.keyboardType = .decimalPad
     }
 
     @IBAction func onDenerateItinernary(_ sender: Any) {
         preference.destination = destinationTextField.text ?? ""
+        preference.accommodationPreference = accomodationPreferenceTextField.text ?? ""
+        preference.transportationPreference = transportationPreferenceTextField.text ?? ""
+        preference.specialNeeds = specialNeedTextField.text ?? ""
+        
+        // Convert budget text to double
+        if let budgetText = budgetTextField.text,
+           let budgetValue = Double(budgetText) {
+            preference.dailyBudget = budgetValue
+        }
 
         let resultVC = storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
         resultVC.preference = preference
@@ -156,14 +183,17 @@ extension EnterPreferenceViewController: UITextFieldDelegate {
                 textField.text = selected
                 self.preference.numberOfTravelers = Int(selected) ?? 1
             }
-        case budgetTextField:
-            showSinglePicker(for: textField, options: budgetOptions) { selected in
-                textField.text = selected
-                self.preference.budget = selected
-            }
+//        case budgetTextField:
+//            showSinglePicker(for: textField, options: budgetOptions) { selected in
+//                textField.text = selected
+//                self.preference.budget = selected
+//            }
         case preferredActivityTextField:
             showActivityMultiSelect()
             textField.resignFirstResponder()
+        case accomodationPreferenceTextField, transportationPreferenceTextField, specialNeedTextField:
+            // These fields are not editable through the picker
+            break
         default:
             break
         }

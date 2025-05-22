@@ -47,10 +47,10 @@ class ResultViewController: UIViewController {
         let days = Calendar.current.dateComponents([.day], from: preference.startDate, to: preference.endDate).day ?? 0
         let totalDays = days + 1
 
-        let budgetFormatted = preference.budget.capitalized
+        let budgetFormatted = String(format: "$%.2f", preference.dailyBudget)
 
         descriptionLabelWithDate.text = "\(startDateStr) - \(endDateStr) • \(totalDays) days"
-        descriptionWithBudget.text = "\(preference.numberOfTravelers) traveler\(preference.numberOfTravelers > 1 ? "s" : "") • \(budgetFormatted) budget"
+        descriptionWithBudget.text = "\(preference.numberOfTravelers) traveler\(preference.numberOfTravelers > 1 ? "s" : "") • \(budgetFormatted) daily budget"
     }
 
     private func setupSpinner() {
@@ -65,7 +65,7 @@ class ResultViewController: UIViewController {
 
         let destination = preference.destination
         let numberOfTravelers = preference.numberOfTravelers
-        let budget = preference.budget.lowercased()
+        let dailyBudget = preference.dailyBudget
 
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -76,7 +76,14 @@ class ResultViewController: UIViewController {
         let activityList = activities.isEmpty ? "no specific activities" : activities.joined(separator: ", ")
 
         let prompt = """
-        Create a personalized travel itinerary for a trip to \(destination). The trip starts on \(start) and ends on \(end), with a total of \(numberOfTravelers) traveler\(numberOfTravelers > 1 ? "s" : ""). The preferred travel style is \(budget). The user is interested in the following activities: \(activityList). Please provide a day-by-day itinerary in a friendly and organized format.
+        Create a personalized travel itinerary for a trip to \(destination). The trip starts on \(start) and ends on \(end), with a total of \(numberOfTravelers) traveler\(numberOfTravelers > 1 ? "s" : ""). The daily budget is $\(dailyBudget) USD. The user is interested in the following activities: \(activityList).
+        
+        Additional preferences:
+        - Accommodation: \(preference.accommodationPreference)
+        - Transportation: \(preference.transportationPreference)
+        - Special Needs: \(preference.specialNeeds)
+        
+        Please provide a day-by-day itinerary in a friendly and organized format, taking into account all preferences and requirements.
         """
 
         callOpenAIGPTMini(with: prompt)
@@ -89,7 +96,7 @@ class ResultViewController: UIViewController {
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("Bearer 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", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer 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", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let payload: [String: Any] = [
